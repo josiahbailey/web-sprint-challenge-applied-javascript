@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Lambda Times</title>
+    <link rel="icon" href="./favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles/index.less" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 
-<head>
-  <title>Lambda Times</title>
-  <link rel="icon" href="./favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-  <link href="./styles/index.less" rel="stylesheet" />
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./components/Tabs.js" defer></script>
+    <script src="./components/Header.js" defer></script>
+    <script src="./components/Cards.js" defer></script>
 
-  <script src="./components/Tabs.js" defer></script>
-  <script src="./components/Header.js" defer></script>
-  <script src="./components/Cards.js" defer></script>
+    <!-- stretch goal: -->
+    <script src="./components/Carousel.js" defer></script>
 
-  <!-- stretch goal: -->
-  <!-- <script src="./components/Carousel.js" defer></script> -->
-</head>
+    <style>
+      .cards-container .card {
+        display: none;
+      }
 
-<body>
-  <div class="top-bar">
-    <div class="container">
-      <div class="container-left">
-        <span>TOPICS</span><span>SEARCH</span>
-      </div>
-      <div class="container-center">
-        <span>GENERAL</span><span>BROWNBAG</span><span>RANDOM</span><span>MUSIC</span><span>ANNOUNCEMENTS</span>
-      </div>
-      <div class="container-right">
-        <span>LOG IN</span>
+      .top-bar {
+        z-index: 1;
+      }
+
+      .carousel img {
+        user-select: none;
+      }
+
+      .left-button {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23999'%3E%3Cpath d='M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px;
+      }
+
+      .right-button {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' fill='%23999'%3E%3Cpath d='M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px;
+      }
+    </style>
+    <style id="article-filter">
+      .cards-container .card[data-topic="javascript"] {
+        display: flex;
+      }
+      .tab.javascript {
+        background: #4caf50 !important;
+      }
+    </style>
+    <style id="carousel-filter">
+      .carousel img[data-index="0"] {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <div class="container">
+        <div class="container-left"><span>TOPICS</span><span>SEARCH</span></div>
+        <div class="container-center">
+          <span>GENERAL</span><span>BROWNBAG</span><span>RANDOM</span
+          ><span>MUSIC</span><span>ANNOUNCEMENTS</span>
+        </div>
+        <div class="container-right">
+          <span>LOG IN</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="header-container">
-    <!-- 1. PLACE HEADER HERE -->
-  </div>
-
-  <div class="tabs">
-    <div class="topics">
-      <span class="title">TRENDING TOPICS:</span>
-      <!-- 2. PLACE TABS HERE -->
+    <div class="header-container">
+      <!-- 1. PLACE HEADER HERE -->
     </div>
-  </div>
 
-  <div class="cards-container">
-    <!-- 3. PLACE CARDS HERE -->
-  </div>
+    <div class="tabs">
+      <div class="topics">
+        <span class="title">TRENDING TOPICS:</span>
+        <!-- 2. PLACE TABS HERE -->
+      </div>
+    </div>
 
-  <!-- STRETCH GOAL. ONLY ATTEMPT THIS WHEN YOU ARE FINISHED WITH THE MAIN OBJECTIVES -->
-  <div class="carousel-container">
-    <!-- PLACE CAROUSEL HERE -->
-  </div>
+    <!-- STRETCH GOAL. ONLY ATTEMPT THIS WHEN YOU ARE FINISHED WITH THE MAIN OBJECTIVES -->
+    <div class="carousel-container">
+      <!-- PLACE CAROUSEL HERE -->
+    </div>
+    <div class="cards-container">
+      <!-- 3. PLACE CARDS HERE -->
+    </div>
 
-  <!-- STRETCH GOAL. ONLY ATTEMPT THIS WHEN YOU ARE FINISHED WITH THE MAIN OBJECTIVES -->
-  <div class="errors-container">
-    <!-- ERROR MESSAGES FOR FAILED REQUESTS -->
-  </div>
-</body>
-
+    <!-- STRETCH GOAL. ONLY ATTEMPT THIS WHEN YOU ARE FINISHED WITH THE MAIN OBJECTIVES -->
+    <div class="errors-container">
+      <!-- ERROR MESSAGES FOR FAILED REQUESTS -->
+    </div>
+  </body>
 </html>
